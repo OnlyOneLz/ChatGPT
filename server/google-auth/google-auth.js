@@ -70,7 +70,7 @@ const googleAuth = (app) => {
     passport.authenticate("google", { failureRedirect: "/login" }),
     function (req, res) {
       res.redirect(
-        "http://127.0.0.1:5500/client/src/html/index.html#/?token=" +
+        "https://chatgpt-production-13b9.up.railway.app/?token=" +
           req.user.token
       );
     }
