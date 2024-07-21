@@ -252,7 +252,7 @@ const app = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("conversationId");
     localStorage.removeItem("history");
-    window.location.href = "/client/src/html/login.html";
+    window.location.href = "/login";
   });
 
   document.addEventListener("click", (event) => {

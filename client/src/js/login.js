@@ -15,7 +15,7 @@ const app = () => {
     const validEmail = await fetchUser(emailInput.value, "password");
     const validToken = await checkAuthentication();
     if (validEmail && validToken) {
-      window.location.href = "/client/src/html/index.html";
+      window.location.href = "/";
     }
   };
 
@@ -125,7 +125,7 @@ const app = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.value);
-        window.location.href = "/client/src/html/index.html";
+        window.location.href = "/";
       }
     } catch (error) {
       console.error("Error verifying token:", error);
