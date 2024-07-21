@@ -103,7 +103,8 @@ const app = () => {
   }
 
   const startGoogleFlow = async () => {
-    window.location.href = "/auth/google";
+    window.location.href =
+      "https://chatgpt-production-13b9.up.railway.app/auth/google";
   };
 
   const newSignup = async () => {
