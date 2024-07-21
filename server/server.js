@@ -14,8 +14,7 @@ require("dotenv").config();
 require("./db");
 
 const app = express();
-
-app.use(express.static(path.join(process.cwd(), "../client/src")));
+app.use(express.static(path.join(__dirname, "../client/src")));
 // Index route needs to be ABOVE the router middleware
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../client/src/html", "index.html"));
