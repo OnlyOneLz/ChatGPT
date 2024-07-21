@@ -73,7 +73,7 @@ const app = async () => {
   const fetchMessages = async (chatId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/one/${chatId}`,
+        `https://chatgpt-production-13b9.up.railway.app/conversations/one/${chatId}`,
         {
           method: "GET",
           headers: {
@@ -104,7 +104,7 @@ const app = async () => {
   const getChats = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/user/${userId}`,
+        `https://chatgpt-production-13b9.up.railway.app/conversations/user/${userId}`,
         {
           method: "GET",
           headers: {
@@ -115,8 +115,7 @@ const app = async () => {
       );
       const data = await response.json();
       if (response.status === 401) {
-        window.location.href =
-          "http://127.0.0.1:5500/client/src/html/login.html#";
+        window.location.href = "/client/src/html/login.html#";
       } else if (data.length > 0) {
         data.forEach((chat) => {
           const chats = document.createElement("li");
@@ -148,12 +147,15 @@ const app = async () => {
   const deleteMessages = async () => {
     const conversationId = localStorage.getItem("conversationId");
     try {
-      await fetch(`http://localhost:4000/messages/${conversationId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `https://chatgpt-production-13b9.up.railway.app/messages/${conversationId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -162,7 +164,7 @@ const app = async () => {
   const deleteConversationWithMesssages = async (conversationId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/${conversationId}`,
+        `https://chatgpt-production-13b9.up.railway.app/conversations/${conversationId}`,
         {
           method: "DELETE",
           headers: {
@@ -176,7 +178,7 @@ const app = async () => {
       const messageHistory = localStorage.getItem("history");
       if (messageHistory && messageHistory.length > 0) {
         const response2 = await fetch(
-          `http://localhost:4000/messages/${conversationId}`,
+          `https://chatgpt-production-13b9.up.railway.app/messages/${conversationId}`,
           {
             method: "DELETE",
             headers: {
@@ -250,7 +252,7 @@ const app = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("conversationId");
     localStorage.removeItem("history");
-    window.location.href = "http://localhost:4000/login";
+    window.location.href = "/client/src/html/login.html";
   });
 
   document.addEventListener("click", (event) => {

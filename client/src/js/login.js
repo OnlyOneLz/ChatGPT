@@ -28,16 +28,20 @@ const app = () => {
 
   const fetchUser = async (email, password) => {
     try {
-      const response = await fetch("/user/get", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: passwordInput.value !== "" ? passwordInput.value : password,
-        }),
-      });
+      const response = await fetch(
+        "https://chatgpt-production-13b9.up.railway.app/user/get",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password:
+              passwordInput.value !== "" ? passwordInput.value : password,
+          }),
+        }
+      );
       const data = await response.json();
       if (response.status === 401 && passwordInput.value !== "") {
         const errorMessage = document.createElement("div");
@@ -76,13 +80,16 @@ const app = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("/protected", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://chatgpt-production-13b9.up.railway.app/protected",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.ok) {
         return true;
       } else {
@@ -101,16 +108,19 @@ const app = () => {
 
   const newSignup = async () => {
     try {
-      const response = await fetch("/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailInput.value,
-          password: passwordInput.value,
-        }),
-      });
+      const response = await fetch(
+        "https://chatgpt-production-13b9.up.railway.app/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+            password: passwordInput.value,
+          }),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.value);
