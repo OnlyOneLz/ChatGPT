@@ -115,7 +115,7 @@ const app = async () => {
       );
       const data = await response.json();
       if (response.status === 401) {
-        window.location.href = "/client/src/html/login.html#";
+        window.location.href = "/login";
       } else if (data.length > 0) {
         data.forEach((chat) => {
           const chats = document.createElement("li");
